@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 200,
             ),
-            SizedBox(
+            const SizedBox(
               width: 320, // Set the desired width of the container
               height: 25, // Set the desired height of the container
               child: FittedBox(
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   alignment: Alignment.centerRight, // Align the text to the right
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Icon(Icons.format_list_numbered, color: Colors.white, size: 100),
                     Text(
                       "1, 2, 3, 4, 5",
@@ -130,9 +130,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             const Size(177, 83.0),
                           ),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text(
                               'ENTER',
                               style: TextStyle(
