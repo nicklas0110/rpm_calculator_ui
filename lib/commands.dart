@@ -1,31 +1,79 @@
-abstract class ICommand{ //the commands
-  num executeAddition();
-  num executeSubtraction();
-  num executeMultiply();
-  num executeDivision();
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
+
+import 'Stack.dart';
+
+abstract class Command {
+  execute(CalcStack numbers);
+
 }
 
-class Numbers implements ICommand{ //numbers to calculate
-  num num1;
-  num num2;
-
-  Numbers(this.num1, this.num2);
+class Addition extends MasterClass {
 
   @override
-  num executeAddition() { //Addition
-    return num1+num2;
+  result(num numb1, num numb2) {
+    return numb1+numb2;
   }
+
+}
+
+class Subtraction extends MasterClass {
+
+
   @override
-  num executeSubtraction() { //Subtraction
-    return num1-num2;
+  result(num numb1, num numb2) {
+    return numb2-numb1;
   }
+
+}
+
+
+class Multiplication extends MasterClass {
+
   @override
-  num executeMultiply() { //Multiply
-    return num1*num2;
+  result(num numb1, num numb2) {
+    return numb1*numb2;
   }
+
+}
+
+class Division extends MasterClass {
   @override
-  num executeDivision() { //Division
-    return num1/num2;
+  result(num numb1, num numb2) {
+    return numb2/numb1;
+  }
+
+
+}
+
+
+abstract class MasterClass implements Command {
+  @override
+  execute(CalcStack numbers) {
+    var numb1 = numbers.pop();
+    var numb2 = numbers.pop();
+    numbers.push(result(numb1, numb2));
+    return numbers.peek();
+  }
+
+  result(num numb1, num numb2);
+
+}
+
+
+class Quit implements Command{
+  @override
+  execute(CalcStack numbers) {
+    exit(1);
+  }
+
+}
+
+class Clear implements Command {
+  @override
+  execute(CalcStack numbers) {
+    numbers.clear();
   }
 
 }
