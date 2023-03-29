@@ -12,6 +12,9 @@ class Display extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CalculatorModel>(context);
+    String number = provider.number;
+    if (provider.number == ""){number = "0";}
+
     return Padding(
       padding: const EdgeInsets.only(top: 190),
       child: Column(
@@ -20,10 +23,7 @@ class Display extends StatelessWidget {
             width: 320, // Set the desired width of the container
             height: 35, // Set the desired height of the container
             child: FittedBox(
-              fit: BoxFit.scaleDown,
-              // Scale the text down to fit within the constraints
               alignment: Alignment.centerRight,
-              // Align the text to the right
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -45,12 +45,9 @@ class Display extends StatelessWidget {
             width: 333, // Set the desired width of the container
             height: 100, // Set the desired height of the container
             child: FittedBox(
-                fit: BoxFit.scaleDown,
-                // Scale the text down to fit within the constraints
                 alignment: Alignment.centerRight,
-                // Align the text to the right
                 child: Text(
-                  provider.number,
+                  number,
                   textAlign: TextAlign.left,
                   style: const TextStyle(
                       color: Colors.white,
